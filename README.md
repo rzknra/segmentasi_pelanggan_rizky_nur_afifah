@@ -59,7 +59,7 @@ Berikut ini ditampilan 5 sampel awal dari data.
 |  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |
 |  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |
 
-### Fitur-Fitur Data
+### Fitur Data
 Berdasarkan informasi di Kaggle, 7 fitur data pada dataset adalah sebagai berikut:
 - **InvoiceNo**: Nomor faktur. Nominal. Merupakan nomor integral 6 digit yang secara - unik diberikan pada setiap transaksi. Jika nomor ini diawali dengan huruf 'C', itu menandakan transaksi tersebut adalah pembatalan (cancellation).
 - **StockCode**: Kode produk (item). Nominal. Merupakan nomor integral 5 digit yang secara unik diberikan pada setiap produk yang berbeda.
