@@ -48,7 +48,7 @@ Data yang digunakan dalam pengembangan model ini adalah data sekunder yang diper
 
 - Data berformat **Excel**.
 - Data yang digunakan berasal dari penggabungan data online retail tahun **2009-2010** dan data online retail tahun **2010-2011**.
-- Data terdiri dari **1.067.371** sampel dan **7** fitur.
+- Data terdiri dari **1.067.371** sampel dan **8** fitur.
 
 Berikut ini ditampilan 5 sampel awal dari data.
 
@@ -72,7 +72,7 @@ Berdasarkan informasi di Kaggle, 7 fitur data pada dataset adalah sebagai beriku
 - **Country**: Nama negara. Nominal. Menunjukkan nama negara tempat pelanggan tinggal atau berasal.
 
 Ketujuh fitur data tersebut terbagi menjadi:
-- **4 fitur kategori** (Invoice, StockCode, Country, Customer ID)
+- **5 fitur kategori** (Invoice, StockCode, Country, Customer ID, Description)
 - **3 fitur numerik** merapakan fitur numerik (Quantity, InvoiceDate, Price).
 
 ### Deskripsi Statistik 
