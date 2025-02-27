@@ -79,7 +79,7 @@ Berikut adalah hasil pengecekan deskripsi statistik.
 
 |       |         Quantity | InvoiceDate                   |            Price |
 |:------|-----------------:|:------------------------------|-----------------:|
-| count |      1.067.371   | 1067371                       |      1.067371    |
+| count |      1067371     | 1067371                       |      1067371     |
 | mean  |      9.9389      | 2011-01-02 21:13:55.394028544 |      4.64939     |
 | min   | -80995           | 2009-12-01 07:45:00           | -53594.4         |
 | 25%   |      1           | 2010-07-09 09:46:00           |      1.25        |
@@ -140,7 +140,7 @@ Setelah dilakukan pembersihan, data terdiri dari 779.425 sampel dan 7 fitur. Ber
 |  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |    
 |  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |     
 
-## Pemodelan dan Evaluasi
+## Pemrosesan Data
 ### Pembuatan Fitur Baru
 Dibuat fitur Revenue dengan cara mengalikan fitur price dan quantity. Fitur Revenue akan digunakan untuk menghitung nilai Monetary dari RFM dengan kolom baru revenue. Berikut ini tampilan data RFM terbaru yang terdiri dari 779.425 sampel dan 8 fitur.
 
@@ -277,6 +277,7 @@ Berikut ini deskripsi statistik dari data RFM yang sudah diskalakan.
 
 Terlihat semua fitur berada pada rentang nilai -3 hingga 3. Selain itu, juga mempunyai mean 0 dan standar deviasi 1.
 
+## Pemodelan dan Evaluasi
 ### Penentuan nilai k yang optimal
 Sebelum pengelompokan, ditentukan dulu nilai k paling optimal menggunakan elbow method. Elbow method adalah teknik untuk menentukan jumlah klaster optimal dalam K-Means Clustering dengan melihat perubahan nilai inertia atau within-cluster sum of squares (WCSS).
 
