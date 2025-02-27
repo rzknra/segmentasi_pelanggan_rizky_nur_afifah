@@ -119,9 +119,7 @@ Ditemukan bahwa:
 - Terdapat **22.950** Quantity bernilai negatif dan 5 Price bernilai negatif
 - Terdapat StockCode yang terdiri dari 6 digit (kebanyakan berpola 5 digit angka + 1 huruf (kapital/kecil)), yang seharusnya hanya terdiri dari 5 digit angka.
 
-## Pemrosesan Data
-
-### Pembersihan Data
+## Pembersihan Data
 
 Langkah selanjutnya adalah melakukan **Pembersihan Data**, yang meliputi pembersihan data dengan langkah-langkah sebagai berikut:
 
@@ -154,7 +152,7 @@ Dibuat fitur Revenue dengan cara mengalikan fitur price dan quantity. Fitur Reve
 |  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |     100.8 |
 |  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |      30   |
 
-### Menghitung RFM
+### Penghitungan RFM
 Setelah fitur Revenue ditambahkan, nilai RFM dihitung menggunakan rumus berikut:
 - **Recency**  
 
@@ -171,12 +169,12 @@ Setelah fitur Revenue ditambahkan, nilai RFM dihitung menggunakan rumus berikut:
 Lebih lanjut nilai RFM dihitung dengan menjalankan kode berikut:
 
 ```
-# Menentukan Tanggal Referensi (tangal terakhir transaksi + 1 hari)
+# Penentuan Tanggal Referensi (tangal terakhir transaksi + 1 hari)
 reference_date = df_cleaned["InvoiceDate"].max() + pd.Timedelta(days=1)
 ```
 
 ```
-# Menghitung Metrik RFM
+# Penghitungan Metrik RFM
 rfm = df_cleaned.groupby("Customer ID").agg({
     "InvoiceDate": lambda x: (reference_date - x.max()).days,
     "Invoice": "nunique",
@@ -196,7 +194,7 @@ Nilai RFM yang sudah dihitung dimuat dalam bentuk data RFM. Data ini terdiri dar
 |        36 |          10 |    2849.84 |       
 |       204 |           2 |     406.76 |        
 
-### Mengecek dan Menghapus Outlier 
+### Pengecekan dan Penghapusan Outlier 
 Dilakukan pengecekan outlier dari data RFM sebagai berikut.
 ![16](https://github.com/user-attachments/assets/1df76863-3110-424a-9aad-018a266a77d0)
 ![17](https://github.com/user-attachments/assets/d56f1bc8-7c47-4f23-97f5-35bb70529a43)
@@ -279,7 +277,7 @@ Berikut ini deskripsi statistik dari data RFM yang sudah diskalakan.
 
 Terlihat semua fitur berada pada rentang nilai -3 hingga 3. Selain itu, juga mempunyai mean 0 dan standar deviasi 1.
 
-### Menentukan nilai k yang optimal
+### Penentuan nilai k yang optimal
 Sebelum pengelompokan, ditentukan dulu nilai k paling optimal menggunakan elbow method. Elbow method adalah teknik untuk menentukan jumlah klaster optimal dalam K-Means Clustering dengan melihat perubahan nilai inertia atau within-cluster sum of squares (WCSS).
 
 Dalam metode ini, model K-Means dijalankan dengan berbagai nilai k (jumlah klaster), lalu nilai WCSS dihitung untuk setiap k. WCSS mengukur seberapa dekat data dalam satu klaster terhadap pusat klasternya—semakin kecil nilai WCSS, semakin baik klasterisasi.
