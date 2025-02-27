@@ -4,7 +4,7 @@
 
 Dalam dunia bisnis, memahami pelanggan merupakan salah satu kunci keberhasilan strategi pemasaran. Segmentasi pelanggan memungkinkan bisnis untuk mengelompokkan pelanggan berdasarkan perilaku mereka, sehingga dapat menyusun strategi yang lebih efektif. Salah satu pendekatan yang umum digunakan adalah metode **RFM (Recency, Frequency, Monetary)**, yang mengevaluasi pelanggan berdasarkan seberapa baru mereka bertransaksi (Recency), seberapa sering mereka bertransaksi (Frequency), dan seberapa banyak mereka membelanjakan uangnya (Monetary) (Kotler & Keller, 2015).
 
-Namun, data RFM sering kali memiliki distribusi yang tidak normal dan rentang nilai yang bervariasi, yang dapat memengaruhi hasil analisis ketika menggunakan metode klasterisasi seperti **K-Means**. Oleh karena itu, diperlukan **transformasi data** seperti **Yeo-Johnson Transformation** untuk menormalkan distribusi data dan **standarisasi** menggunakan **StandardScaler** untuk memastikan fitur berada dalam skala yang sama sebelum melakukan klasterisasi (James dll, 2013).
+Namun, data RFM sering kali memiliki distribusi yang tidak normal dan rentang nilai yang bervariasi, yang dapat memengaruhi hasil analisis ketika menggunakan metode klasterisasi seperti **K-Means**. Oleh karena itu, diperlukan **transformasi data** seperti **Yeo-Johnson Transformation** untuk menormalkan distribusi data dan **standardisasi** menggunakan **StandardScaler** untuk memastikan fitur berada dalam skala yang sama sebelum melakukan klasterisasi (James dll, 2013).
 
 Metode **K-Means Clustering** digunakan dalam proyek ini untuk mengelompokkan pelanggan berdasarkan karakteristik RFM mereka, sehingga dapat membantu dalam pengambilan keputusan strategis seperti retensi pelanggan dan pemasaran yang lebih personal (Han, Kamber, & Pei, 2011).
 
@@ -19,7 +19,7 @@ Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu
 
 ## Tujuan
 1. Melakukan **pembersihan dan pemrosesan data pelanggan** agar siap digunakan dalam analisis segmentasi.
-2. Menerapkan **transformasi Yeo-Johnson** dan **standarisasi StandardScaler** untuk memperbaiki distribusi dan skala data RFM.
+2. Menerapkan **transformasi Yeo-Johnson** dan **standardisasi StandardScaler** untuk memperbaiki distribusi dan skala data RFM.
 3. Menentukan jumlah klaster optimal dengan **Elbow Method** dan **Silhouette Score**.
 4. Menginterpretasikan hasil klasterisasi dan memberikan wawasan strategis untuk bisnis berdasarkan karakteristik pelanggan dalam setiap klaster.
 
@@ -31,13 +31,13 @@ Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu
    - Mengatasi missing values dan duplikasi.
    - Menghitung nilai **RFM**.
    - Menghapus **outlier** menggunakan metode **Interquartile Range (IQR)**.
-3. **Transformasi dan Standarisasi Data**
+3. **Transformasi dan Standardisasi Data**
    - Melakukan **transformasi Yeo-Johnson** untuk memperbaiki distribusi data.
    - Menerapkan **StandardScaler** untuk menstandarkan skala fitur RFM.
 4. **Pemodelan dan Evaluasi**
    - Menentukan jumlah klaster optimal menggunakan **Elbow Method**.
    - Menerapkan **K-Means Clustering** dan memberikan label klaster pada pelanggan.
-   - Mengevaluasi model menggunaka **Silhouette Score**
+   - Mengevaluasi model menggunakan **Silhouette Score**
 5. **Visualisasi dan Interpretasi**
    - Memvisualisasikan hasil clustering dengan **PCA**.
    - Menginterpretasikan setiap klaster berdasarkan nilai rata-rata RFM dari masing-masing kluster untuk memberikan wawasan strategis kepada bisnis.
@@ -45,7 +45,7 @@ Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu
 ## Pemahaman Data
 Data yang digunakan dalam pengembangan model ini adalah data sekunder yang diperoleh dari Kaggle dengan nama dataset "'Online Retail II Data Set from ML Repository", yang dapat diakses melalui tautan berikut: **https://www.kaggle.com/datasets/mathchi/online-retail-ii-data-set-from-ml-repository**. Lebih lanjut, detail mengenai data tersebut diberikan sebagai berikut:
 
-- Data berformar **Excel**.
+- Data berformat **Excel**.
 - Data yang digunakan berasal dari penggabungan data online retail tahun **2009-2010** dan data online retail tahun **2010-2011**.
 - Data terdiri dari **1.067.371** sampel dan **7** fitur.
 
@@ -93,7 +93,7 @@ Interpretasi:
 - Quantity (Jumlah Barang yang Dibeli)
     - **Rata-rata jumlah barang yang dibeli per transaksi**: ~9.94 unit.
     - **Rentang quantity sangat luas**: dari **-80,995** hingga **80,995**.
-    - **Adanya nilai negatif** mengkin menunjukkan **pembatalan transaksi**.
+    - **Adanya nilai negatif** mungkin menunjukkan **pembatalan transaksi**.
     - **Standar deviasi cukup besar (172.7)** → menunjukkan variasi tinggi dalam jumlah barang yang dibeli per transaksi.
 
 - InvoiceDate (Tanggal Transaksi)
@@ -115,7 +115,7 @@ Pada tahap ini, dilakukan pengecekan terhadap beberapa aspek penting dalam datas
 
 Ditemukan bahwa:
 - Terdapat **19.494** transaksi yang dibatalkan (Invoice diawali huruf 'C')
-- Terdapat **243.007** Cuatomer ID yang hilang
+- Terdapat **243.007** Customer ID yang hilang
 - Terdapat **22.950** Quantity bernilai negatif dan 5 Price bernilai negatif
 - Terdapat StockCode yang terdiri dari 6 digit (kebanyakan berpola 5 digit angka + 1 huruf (kapital/kecil)), yang seharusnya hanya terdiri dari 5 digit angka.
 
@@ -154,8 +154,8 @@ Dibuat fitur Revenue dengan cara mengalikan fitur price dan quantity. Fitur Reve
 |  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |     100.8 |
 |  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |      30   |
 
-### Mengitung RFM
-Setelah kolom Revenue dibuat, selanjutnya dihitung nilai RFM dengan rumus berikut:
+### Menghitung RFM
+Setelah fitur Revenue ditambahkan, nilai RFM dihitung menggunakan rumus berikut:
 - **Recency**  
 
   R = Tanggal Referensi - Tanggal Transaksi Terakhir
@@ -218,9 +218,9 @@ Analisis univariat digunakan untuk memahami karakteristik tipa fitur pada data R
 
 ![19](https://github.com/user-attachments/assets/40f80e9d-1d27-4054-9786-9a2a9f7039b3)
 
-Terlihat bahwa ketiga fitur memiliki distribusi yang miring ke kanan (right-skewed), yang berarti sebagian besar nilai terkonsentrasi di sisi kiri dengan ekor panjang ke kanan. Distribusi seperti ini dapat menyebabkan distorsi dalam analisis data, terutama saat menggunakan metode berbasis jarak seperti K-Means, karena fitur dengan rentang nilai besar akan lebih mendominasi. Oleh karena itu, perlu dilakukan transformasi data untuk membuat distribusi lebih mendekati normal, sehingga model dapat bekerja lebih efektif dan menghasilkan klaster yang lebih akurat.
+Terlihat bahwa ketiga fitur memiliki distribusi yang menceng ke kanan (right-skewed), yang berarti sebagian besar nilai terkonsentrasi di sisi kiri dengan ekor panjang ke kanan. Distribusi seperti ini dapat menyebabkan distorsi dalam analisis data, terutama saat menggunakan metode berbasis jarak seperti K-Means, karena fitur dengan rentang nilai besar akan lebih mendominasi. Oleh karena itu, perlu dilakukan transformasi data untuk membuat distribusi lebih mendekati normal, sehingga model dapat bekerja lebih efektif dan menghasilkan klaster yang lebih akurat.
 
-### Trannsformasi dan Scaling Data
+### Transformasi dan Scaling Data
 Selanjutnya, akan dilakukan:
 - Tranformasi data menggunakan teknik **Yeo-Johnson**.
 - Scaling data menggunaan teknik **StandardScaler**.
@@ -253,18 +253,18 @@ Berikut ini adalah tampilan distribusi data RFM terbaru setelah dilakukan transf
 
 Terlihat bahwa kemiringan distribusi Recency dan Frequency berkurang, sementara Monetary mendekati distribusi normal.
 
-Selanjutnya dilakukan scaling mengggunakan StandardScaler. StandardScaler mentransformasikan setiap fitur $X$ agar memiliki **mean = 0** dan **standar deviasi = 1** yang membuat semua fitur memiliki skala yang sama, sehingga lebih cocok untuk algoritma berbasis jarak seperti **K-Means**. Rumusannnya diberikan sebagai berikut:
+Selanjutnya dilakukan scaling menggunakan StandardScaler. StandardScaler mentransformasikan setiap fitur $X$ agar memiliki **mean = 0** dan **standar deviasi = 1** yang membuat semua fitur memiliki skala yang sama, sehingga lebih cocok untuk algoritma berbasis jarak seperti **K-Means**. Rumusannnya diberikan sebagai berikut:
 
 
 $$X' = \frac{X - \mu}{\sigma}$$
 
 di mana:
-- $X'$ = nilai yang sudah di scaling  
+- $X'$ = nilai yang sudah diskalakan  
 - $X$ = nilai asli fitur  
 - $\mu$ = rata-rata fitur  
 - $\sigma$ = standar deviasi fitur
 
-Berikut ini deskripsi statistik dari data RFM yang sudah di scaling.
+Berikut ini deskripsi statistik dari data RFM yang sudah diskalakan.
 
 |       |   Recency |   Frequency |   Monetary |
 |:------|----------:|------------:|-----------:|
@@ -280,7 +280,7 @@ Berikut ini deskripsi statistik dari data RFM yang sudah di scaling.
 Terlihat semua fitur berada pada rentang nilai -3 hingga 3. Selain itu, juga mempunyai mean 0 dan standar deviasi 1.
 
 ### Menentukan nilai k yang optimal
-Sebelum pengklusteran, ditentukan dulu nilai k paling optimal menggunakan elbow method. Elbow method adalah teknik untuk menentukan jumlah klaster optimal dalam K-Means Clustering dengan melihat perubahan nilai inertia atau within-cluster sum of squares (WCSS).
+Sebelum pengelompokan, ditentukan dulu nilai k paling optimal menggunakan elbow method. Elbow method adalah teknik untuk menentukan jumlah klaster optimal dalam K-Means Clustering dengan melihat perubahan nilai inertia atau within-cluster sum of squares (WCSS).
 
 Dalam metode ini, model K-Means dijalankan dengan berbagai nilai k (jumlah klaster), lalu nilai WCSS dihitung untuk setiap k. WCSS mengukur seberapa dekat data dalam satu klaster terhadap pusat klasternya—semakin kecil nilai WCSS, semakin baik klasterisasi.
 
@@ -307,7 +307,7 @@ Grafik di atas menunjukkan hasil **Elbow Method** untuk menentukan jumlah klaste
 
 Berdasarkan **Elbow Method**, jumlah klaster optimal untuk data ini adalah **4 klaster**.
 
-### Clusterisasi dengan K-Means
+### Klasterisasi dengan K-Means
 Dilakukan clusterisaasi dengan K-Means, yaitu metode klasterisasi tidak terawasi (unsupervised learning) yang digunakan untuk mengelompokkan data ke dalam k klaster berdasarkan kesamaan fitur. Dengan mengggunakan **k = 4**, diperoleh silhouette score sebesar **0.384075982836882**, yang berarti: 
 - **Klaster memiliki pemisahan yang cukup baik**, tetapi masih ada beberapa data yang berada di dekat batas antar-klaster.  
 - **Silhouette Score belum optimal** – meskipun tidak buruk, skor ini bisa lebih baik, mengingat standar umum di mana **Silhouette Score di atas 0.5 dianggap bagus**.  
