@@ -25,20 +25,21 @@ Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu
 
 ## Solusi
 1. **Pemuatan dan Pemahaman Data**
-   - Memuat dataset pelanggan dan memahami struktur serta tipe data.
-2. **Pembersihan dan Pemrosesan Data**
-   - Mengubah tipe data yang tidak sesuai.
-   - Mengatasi missing values dan duplikasi.
+   - Memuat dataset pelanggan.
+   - Memahami struktur data, deskripsi fitur, tipe data, deskripsi statistik.
+2. **Penilaian Data**
+   - Mengecek missing value, duplikat, dan nilai yang tidak valid.
+3. **Pemrosesan Data**
+   - Membuat fitur baru
    - Menghitung nilai **RFM**.
    - Menghapus **outlier** menggunakan metode **Interquartile Range (IQR)**.
-3. **Transformasi dan Standardisasi Data**
    - Melakukan **transformasi Yeo-Johnson** untuk memperbaiki distribusi data.
    - Menerapkan **StandardScaler** untuk menstandarkan skala fitur RFM.
-4. **Pemodelan dan Evaluasi**
+5. **Pemodelan dan Evaluasi**
    - Menentukan jumlah klaster optimal menggunakan **Elbow Method**.
    - Menerapkan **K-Means Clustering** dan memberikan label klaster pada pelanggan.
    - Mengevaluasi model menggunakan **Silhouette Score**
-5. **Visualisasi dan Interpretasi**
+6. **Visualisasi dan Interpretasi**
    - Memvisualisasikan hasil clustering dengan **PCA**.
    - Menginterpretasikan setiap klaster berdasarkan nilai rata-rata RFM dari masing-masing kluster untuk memberikan wawasan strategis kepada bisnis.
    
