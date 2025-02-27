@@ -2,20 +2,20 @@
 
 ## Domain Proyek
 
-Dalam dunia bisnis, memahami pelanggan adalah kunci keberhasilan strategi pemasaran. Segmentasi pelanggan memungkinkan bisnis untuk mengelompokkan pelanggan berdasarkan perilaku mereka, sehingga dapat menyusun strategi yang lebih efektif. Salah satu pendekatan yang umum digunakan adalah metode **RFM (Recency, Frequency, Monetary)**, yang mengevaluasi pelanggan berdasarkan seberapa baru mereka bertransaksi (Recency), seberapa sering mereka bertransaksi (Frequency), dan seberapa banyak mereka membelanjakan uangnya (Monetary) [1].
+Dalam dunia bisnis, memahami pelanggan merupakan salah satu kunci keberhasilan strategi pemasaran. Segmentasi pelanggan memungkinkan bisnis untuk mengelompokkan pelanggan berdasarkan perilaku mereka, sehingga dapat menyusun strategi yang lebih efektif. Salah satu pendekatan yang umum digunakan adalah metode **RFM (Recency, Frequency, Monetary)**, yang mengevaluasi pelanggan berdasarkan seberapa baru mereka bertransaksi (Recency), seberapa sering mereka bertransaksi (Frequency), dan seberapa banyak mereka membelanjakan uangnya (Monetary) (Kotler & Keller, 2015).
 
-Namun, data RFM sering kali memiliki distribusi yang tidak normal dan rentang nilai yang bervariasi, yang dapat memengaruhi hasil analisis ketika menggunakan metode klasterisasi seperti **K-Means**. Oleh karena itu, diperlukan **transformasi data** seperti **Yeo-Johnson Transformation** untuk menormalkan distribusi data dan **standarisasi** menggunakan **StandardScaler** untuk memastikan fitur berada dalam skala yang sama sebelum melakukan klasterisasi [2].
+Namun, data RFM sering kali memiliki distribusi yang tidak normal dan rentang nilai yang bervariasi, yang dapat memengaruhi hasil analisis ketika menggunakan metode klasterisasi seperti **K-Means**. Oleh karena itu, diperlukan **transformasi data** seperti **Yeo-Johnson Transformation** untuk menormalkan distribusi data dan **standarisasi** menggunakan **StandardScaler** untuk memastikan fitur berada dalam skala yang sama sebelum melakukan klasterisasi (James dll, 2013).
 
-Metode **K-Means Clustering** digunakan dalam proyek ini untuk mengelompokkan pelanggan berdasarkan karakteristik RFM mereka, sehingga dapat membantu dalam pengambilan keputusan strategis seperti retensi pelanggan dan pemasaran yang lebih personal [3].
+Metode **K-Means Clustering** digunakan dalam proyek ini untuk mengelompokkan pelanggan berdasarkan karakteristik RFM mereka, sehingga dapat membantu dalam pengambilan keputusan strategis seperti retensi pelanggan dan pemasaran yang lebih personal (Han, Kamber, & Pei, 2011).
 
-## Business Understanding
+## Pemahaman Bisnis
 Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu bisnis dalam memahami pola perilaku pelanggan sehingga dapat mengoptimalkan strategi pemasaran dan meningkatkan retensi pelanggan. 
 
 ## Rumusan Masalah
-1. Bagaimana cara mengolah dan membersihkan data pelanggan sebelum melakukan analisis segmentasi?
-2. Bagaimana cara memastikan bahwa data yang digunakan memiliki distribusi yang lebih normal dan skala yang seragam?
-3. Berapa jumlah klaster optimal yang sesuai dengan pola pembelian pelanggan?
-4. Bagaimana karakteristik masing-masing segmen pelanggan setelah klasterisasi?
+1. **Bagaimana cara mengolah dan membersihkan data pelanggan** sebelum melakukan analisis segmentasi?  
+2. **Bagaimana cara memastikan bahwa data yang digunakan memiliki distribusi yang lebih normal dan skala yang seragam?**  
+3. **Berapa jumlah klaster optimal** yang sesuai dengan pola pembelian pelanggan?  
+4. **Bagaimana karakteristik masing-masing segmen pelanggan setelah klasterisasi?**  
 
 ## Tujuan
 1. Melakukan **pembersihan dan pemrosesan data pelanggan** agar siap digunakan dalam analisis segmentasi.
@@ -43,13 +43,21 @@ Segmentasi pelanggan menggunakan metode RFM dan K-Means bertujuan untuk membantu
    - Menginterpretasikan setiap klaster berdasarkan nilai rata-rata RFM dari masing-masing kluster untuk memberikan wawasan strategis kepada bisnis.
    
 ## Pemahaman Data
-Data yang digunakan dalam pengembangan model ini adalah data sekunder yang diperoleh dari Kaggle dengan nama dataset "'Online Retail II Data Set from ML Repository", yang dapat diakses melalui tautan berikut: **https://www.kaggle.com/datasets/mathchi/online-retail-ii-data-set-from-ml-repository**
+Data yang digunakan dalam pengembangan model ini adalah data sekunder yang diperoleh dari Kaggle dengan nama dataset "'Online Retail II Data Set from ML Repository", yang dapat diakses melalui tautan berikut: **https://www.kaggle.com/datasets/mathchi/online-retail-ii-data-set-from-ml-repository**. Lebih lanjut, detail mengenai data tersebut diberikan sebagai berikut:
 
-Lebih lanjut, detail mengenai dataset tersebut diberikan sebagai berikut:
+- Data berformar **Excel**.
+- Data yang digunakan berasal dari penggabungan data online retail tahun **2009-2010** dan data online retail tahun **2010-2011**.
+- Data terdiri dari **1.067.371** sampel dan **7** fitur.
 
-- Data berformar Excel.
-- Data yang digunakan berasal dari penggabungan data online retail tahun 2000-2010 dan data online retail tahun 2010-2011.
-- Data terdiri dari 1.067.371 sampel dan 7 fitur.
+Berikut ini ditampilan 5 sampel awal dari data.
+
+|    |   Invoice | StockCode   | Description                         |   Quantity | InvoiceDate         |   Price |   Customer ID | Country        |
+|---:|----------:|:------------|:------------------------------------|-----------:|:--------------------|--------:|--------------:|:---------------|
+|  0 |    489434 | 85048       | 15CM CHRISTMAS GLASS BALL 20 LIGHTS |         12 | 2009-12-01 07:45:00 |    6.95 |         13085 | United Kingdom |
+|  1 |    489434 | 79323P      | PINK CHERRY LIGHTS                  |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |
+|  2 |    489434 | 79323W      | WHITE CHERRY LIGHTS                 |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |
+|  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |
+|  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |
 
 ### Fitur-Fitur Data
 Berdasarkan informasi di Kaggle, 7 fitur data pada dataset adalah sebagai berikut:
@@ -62,18 +70,16 @@ Berdasarkan informasi di Kaggle, 7 fitur data pada dataset adalah sebagai beriku
 - **CustomerID**: Nomor pelanggan. Nominal. Merupakan nomor integral 5 digit yang secara unik diberikan kepada setiap pelanggan.
 - **Country**: Nama negara. Nominal. Menunjukkan nama negara tempat pelanggan tinggal atau berasal.
 
-Ketujuh fitur data tersebut terdiri dari:
-- 5 fitur kategori (Invoice, StockCode, Country, Customer ID)
-- 3 fitur numerik merapakan fitur numerik (Quantity, InvoiceDate, Price).
+Ketujuh fitur data tersebut terbagi menjadi:
+- **4 fitur kategori** (Invoice, StockCode, Country, Customer ID)
+- **3 fitur numerik** merapakan fitur numerik (Quantity, InvoiceDate, Price).
 
 ### Deskripsi Statistik 
 Berikut adalah hasil pengecekan deskripsi statistik.
 
-Tabel 1. Deskripsi Statistik Fitur Numerik
-
 |       |         Quantity | InvoiceDate                   |            Price |
 |:------|-----------------:|:------------------------------|-----------------:|
-| count |      1.06737e+06 | 1067371                       |      1.06737e+06 |
+| count |      1.067.371   | 1067371                       |      1.067371    |
 | mean  |      9.9389      | 2011-01-02 21:13:55.394028544 |      4.64939     |
 | min   | -80995           | 2009-12-01 07:45:00           | -53594.4         |
 | 25%   |      1           | 2010-07-09 09:46:00           |      1.25        |
@@ -87,7 +93,7 @@ Interpretasi:
 - Quantity (Jumlah Barang yang Dibeli)
     - **Rata-rata jumlah barang yang dibeli per transaksi**: ~9.94 unit.
     - **Rentang quantity sangat luas**: dari **-80,995** hingga **80,995**.
-    - **Adanya nilai negatif** dapat menunjukkan **pengembalian barang (refund atau retur produk)**.
+    - **Adanya nilai negatif** mengkin menunjukkan **pembatalan transaksi**.
     - **Standar deviasi cukup besar (172.7)** → menunjukkan variasi tinggi dalam jumlah barang yang dibeli per transaksi.
 
 - InvoiceDate (Tanggal Transaksi)
@@ -96,7 +102,7 @@ Interpretasi:
 
 - Price (Harga Barang)
     - **Harga rata-rata per unit**: 4.65.
-    - **Ada harga negatif (-53,594.36)**  bisa mengindikasikan **pengembalian dana (refund)**.
+    - **Ada harga negatif (-53,594.36)**  mungkin mengindikasikan **pengembalian dana (refund)**.
     - **Harga maksimum mencapai $38,970**, menunjukkan ada produk dengan harga sangat mahal.
     - **Standar deviasi cukup tinggi (123.55)** → menunjukkan variasi harga yang signifikan antara produk-produk yang dijual.
       
@@ -117,23 +123,78 @@ Ditemukan bahwa:
 
 ### Pembersihan Data
 
-Berdasarkan temuan dari **Penilaian Data**, langkah selanjutnya adalah melakukan **Pembersihan Data**, yang meliputi pembersihan data dengan langkah-langkah sebagai berikut:
+Langkah selanjutnya adalah melakukan **Pembersihan Data**, yang meliputi pembersihan data dengan langkah-langkah sebagai berikut:
 
-- **Pengahapusan transaksi yang dibatalkan**: Menghapus transaksi yang dibatalkan agar tidak terjadi distorsi data.
-- **Pengahapusan Customer ID yang hilang**: Menghapus transaksi yang dibatalkan agar tidak terjadi distorsi data.
+- **Penghapusan transaksi yang dibatalkan**: Menghapus transaksi yang dibatalkan agar tidak terjadi distorsi data.
+- **Penghapusan Customer ID yang hilang**: Menghapus transaksi yang dibatalkan agar tidak terjadi distorsi data.
 - **Penghapusan data dengan quantity negatif**: Setelah dilakukan pengecekan lebih lanjut ternyata dari 22.950 sampel dengan Quantity negatif, sebanyak 19.493 sampel berasal dari transaksi yang dibatalkan. Mengingat total transaksi yang dibatalkan berjumlah 19.494, berarti hanya ada satu transaksi yang dibatalkan dengan Quantity tidak negatif. Hal ini menunjukkan bahwa Quantity negatif kemungkinan besar digunakan sebagai penanda transaksi yang dibatalkan. Oleh karena itu, untuk memastikan analisis hanya mencakup transaksi valid, data dengan Quantity negatif perlu dihapus.
-- **Penghapusan price negatif**: Transaksi dengan price negatif ternyata tidak merepresentasikan perilaku pelanggan, melainkan penyesuaian keuangan terkait utang buruk ("adjust bad debt"). Karena analisis berfokus pada perilaku pelanggan, transaksi semacam ini sebaiknya dihapus dari dataset untuk menghindari ketidaktepatan dalam hasil analisis.
-- **Pertahankan StockKode dengan pola 5 digit angka + 5 digit angka + 1 huruf kapital**: Setelahan dilalkukan analisis lebih lanjut, tambahan angka setelah digit ternyata melambankan variasi dari barang. Namun, terjadi ketidakkonsistenan penulisan huruf setelah 5 digit angka, yang mana itu bisa merupakan huruf kecil atau besar. Setelah di cek lebih lanjut, ternyata yang benar adalah menggunakan huruf kapital. Oleh karena itu, semua huruf kecil dibelakang 5 digit angka diubah menjadi huruf kapital agar format data lebih konsisten. Dengan demikian StokeCode dengan pola 5 digit angka + 5 digit angka + 1 huruf kapital dipertahankan dalam data.
+- **Penghapusan Price negatif**: Setalah ditinjau lebih lanjut, transaksi dengan price negatif ternyata tidak merepresentasikan perilaku pelanggan, melainkan penyesuaian keuangan terkait utang buruk ("adjust bad debt"). Karena analisis berfokus pada perilaku pelanggan, transaksi semacam ini sebaiknya dihapus dari dataset untuk menghindari ketidaktepatan dalam hasil analisis.
+- **Pertahankan StockKode dengan pola 5 digit angka dan 5 digit angka + 1 huruf kapital**: Setelahan dilakukan analisis lebih lanjut, tambahan angka setelah digit ternyata melambankan variasi dari barang. Namun, terjadi ketidakkonsistenan penulisan huruf setelah 5 digit angka, yang mana itu bisa merupakan huruf kecil atau besar. Setelah di cek lebih lanjut, StockCode dengan pola 5 digit angka + 1 huruf kapital dan 5 digit angka + 1 huruf kecil mempunyai deskripsi yang sama. Oleh karena itu, semua huruf kecil dibelakang 5 digit angka diubah menjadi huruf kapital agar format data lebih konsisten. Dengan demikian StokeCode dengan pola 5 digit angka + 5 digit angka + 1 huruf kapital dipertahankan dalam data.
 - **Penghapusan data duplikat**: Menghapus 34.335 sampel yang terduplikat agar tidak terjadi distorsi data.
 
-Setelah dilakukan pembersihan, data terdiri dari 779.425 sampel.
+Setelah dilakukan pembersihan, data terdiri dari 779.425 sampel dan 7 fitur. Berikut ini ditampilan 5 sampel awal dari data yang sudah dibersihkan.
+
+|    |   Invoice | StockCode   | Description                         |   Quantity | InvoiceDate         |   Price |   Customer ID | Country        |   
+|---:|----------:|:------------|:------------------------------------|-----------:|:--------------------|--------:|--------------:|:---------------|
+|  0 |    489434 | 85048       | 15CM CHRISTMAS GLASS BALL 20 LIGHTS |         12 | 2009-12-01 07:45:00 |    6.95 |         13085 | United Kingdom |   
+|  1 |    489434 | 79323P      | PINK CHERRY LIGHTS                  |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |     
+|  2 |    489434 | 79323W      | WHITE CHERRY LIGHTS                 |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |   
+|  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |    
+|  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |     
 
 ## Pemodelan dan Evaluasi
 ### Pembuatan Fitur Baru
-Dibuat fitur Revenue dengan cara mengalikan fitur price dan quantity. Fitur Revenue akan digunakan untuk menghitung nilai Monetary dari RFM.
+Dibuat fitur Revenue dengan cara mengalikan fitur price dan quantity. Fitur Revenue akan digunakan untuk menghitung nilai Monetary dari RFM dengan kolom baru revenue. Berikut ini tampilan data RFM terbaru yang terdiri dari 779.425 sampel dan 8 fitur.
+
+|    |   Invoice | StockCode   | Description                         |   Quantity | InvoiceDate         |   Price |   Customer ID | Country        |   Revenue |
+|---:|----------:|:------------|:------------------------------------|-----------:|:--------------------|--------:|--------------:|:---------------|----------:|
+|  0 |    489434 | 85048       | 15CM CHRISTMAS GLASS BALL 20 LIGHTS |         12 | 2009-12-01 07:45:00 |    6.95 |         13085 | United Kingdom |      83.4 |
+|  1 |    489434 | 79323P      | PINK CHERRY LIGHTS                  |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |      81   |
+|  2 |    489434 | 79323W      | WHITE CHERRY LIGHTS                 |         12 | 2009-12-01 07:45:00 |    6.75 |         13085 | United Kingdom |      81   |
+|  3 |    489434 | 22041       | RECORD FRAME 7" SINGLE SIZE         |         48 | 2009-12-01 07:45:00 |    2.1  |         13085 | United Kingdom |     100.8 |
+|  4 |    489434 | 21232       | STRAWBERRY CERAMIC TRINKET BOX      |         24 | 2009-12-01 07:45:00 |    1.25 |         13085 | United Kingdom |      30   |
 
 ### Mengitung RFM
-Setelah kolom Revenue dibuat, selanjutnya dihitung nilai RFM sehingga menghasailkan dataframe RFM yang terdiri dari 5878 sampel dan 3 fitur (Recency, Frequeny, dan Monetery).
+Setelah kolom Revenue dibuat, selanjutnya dihitung nilai RFM dengan rumus berikut:
+- **Recency**  
+
+  R = Tanggal Referensi - Tanggal Transaksi Terakhir
+    
+- **Frequency (F):** Hitung jumlah transaksi unik yang dilakukan pelanggan.  
+
+  F = Jumlah transaksi unik oleh pelanggan
+  
+- **Monetary (M):** Hitung total nilai transaksi yang dilakukan pelanggan.  
+  
+  M = Quantity x Price 
+
+Lebih lanjut nilai RFM dihitung dengan menjalankan kode berikut:
+
+```
+# Menentukan Tanggal Referensi (tangal terakhir transaksi + 1 hari)
+reference_date = df_cleaned["InvoiceDate"].max() + pd.Timedelta(days=1)
+```
+
+```
+# Menghitung Metrik RFM
+rfm = df_cleaned.groupby("Customer ID").agg({
+    "InvoiceDate": lambda x: (reference_date - x.max()).days,
+    "Invoice": "nunique",
+    "Revenue": "sum"
+}).rename(columns={"InvoiceDate": "Recency", "Invoice": "Frequency", "Revenue": "Monetary"})
+rfm.head()
+```
+
+
+Nilai RFM yang sudah dihitung dimuat dalam bentuk data RFM. Data ini terdiri dari 5878 sampel dan 3 fitur (Recency, Frequeny, dan Monetery). Berikut tampilan 5 sampel awal data RFM.
+
+|   Recency |   Frequency |   Monetary |   
+|----------:|------------:|-----------:|
+|        75 |           5 |    2019.4  |   
+|       310 |           1 |     334.4  |      
+|       375 |           1 |     300.93 |       
+|        36 |          10 |    2849.84 |       
+|       204 |           2 |     406.76 |        
 
 ### Mengecek dan Menghapus Outlier 
 Dilakukan pengecekan outlier dari data RFM sebagai berikut.
@@ -150,14 +211,16 @@ dengan:
 *   $Q_3$ = Quartile 3
 *   $Q_1$ = Quartile 1
 
+Setelah dilakukan IQR, data RFM terdiri dari 5001 sampel dan 3 fitur.
+
 ### Analisis Univariat
 Analisis univariat digunakan untuk memahami karakteristik tipa fitur pada data RFM. Hasil analisis univariat disajikan dalam gambar berikut.
 
 ![19](https://github.com/user-attachments/assets/40f80e9d-1d27-4054-9786-9a2a9f7039b3)
 
-Terlihat bahwa ketiga fitur miring ke kanan. Oleh karena itu, perlu dilakukan transformasi.
+Terlihat bahwa ketiga fitur memiliki distribusi yang miring ke kanan (right-skewed), yang berarti sebagian besar nilai terkonsentrasi di sisi kiri dengan ekor panjang ke kanan. Distribusi seperti ini dapat menyebabkan distorsi dalam analisis data, terutama saat menggunakan metode berbasis jarak seperti K-Means, karena fitur dengan rentang nilai besar akan lebih mendominasi. Oleh karena itu, perlu dilakukan transformasi data untuk membuat distribusi lebih mendekati normal, sehingga model dapat bekerja lebih efektif dan menghasilkan klaster yang lebih akurat.
 
-### Trnasormasi dan Scaling Data
+### Trannsformasi dan Scaling Data
 Selanjutnya, akan dilakukan:
 - Tranformasi data menggunakan teknik **Yeo-Johnson**.
 - Scaling data menggunaan teknik **StandardScaler**.
@@ -199,7 +262,22 @@ di mana:
 - $X'$ = nilai yang sudah di scaling  
 - $X$ = nilai asli fitur  
 - $\mu$ = rata-rata fitur  
-- $\sigma$ = standar deviasi fitur  
+- $\sigma$ = standar deviasi fitur
+
+Berikut ini deskripsi statistik dari data RFM yang sudah di scaling.
+
+|       |   Recency |   Frequency |   Monetary |
+|:------|----------:|------------:|-----------:|
+| count |   5001    |     5001    |    5001    |
+| mean  |      0    |       -0    |      -0    |
+| std   |      1    |        1    |       1    |
+| min   |     -2.02 |       -1.2  |      -3.38 |
+| 25%   |     -0.87 |       -1.2  |      -0.73 |
+| 50%   |      0.06 |       -0.27 |      -0.02 |
+| 75%   |      0.92 |        0.91 |       0.76 |
+| max   |      1.6  |        2.01 |       1.99 |
+
+Terlihat semua fitur berada pada rentang nilai -3 hingga 3. Selain itu, juga mempunyai mean 0 dan standar deviasi 1.
 
 ### Menentukan nilai k yang optimal
 Sebelum pengklusteran, ditentukan dulu nilai k paling optimal menggunakan elbow method. Elbow method adalah teknik untuk menentukan jumlah klaster optimal dalam K-Means Clustering dengan melihat perubahan nilai inertia atau within-cluster sum of squares (WCSS).
@@ -229,7 +307,7 @@ Grafik di atas menunjukkan hasil **Elbow Method** untuk menentukan jumlah klaste
 
 Berdasarkan **Elbow Method**, jumlah klaster optimal untuk data ini adalah **4 klaster**.
 
-#### Clusterisasi dengan K-Means
+### Clusterisasi dengan K-Means
 Dilakukan clusterisaasi dengan K-Means, yaitu metode klasterisasi tidak terawasi (unsupervised learning) yang digunakan untuk mengelompokkan data ke dalam k klaster berdasarkan kesamaan fitur. Dengan mengggunakan **k = 4**, diperoleh silhouette score sebesar **0.384075982836882**, yang berarti: 
 - **Klaster memiliki pemisahan yang cukup baik**, tetapi masih ada beberapa data yang berada di dekat batas antar-klaster.  
 - **Silhouette Score belum optimal** – meskipun tidak buruk, skor ini bisa lebih baik, mengingat standar umum di mana **Silhouette Score di atas 0.5 dianggap bagus**.  
@@ -306,7 +384,10 @@ Pelanggan di cluster ini bisa jadi adalah **pelanggan baru atau sesekali**. Untu
 
 Dengan memahami karakteristik masing-masing cluster, dapat diterapkan strategi pemasaran yang lebih efektif dan **memaksimalkan retensi serta nilai pelanggan**.
 
-
+## Referensi
+- Kotler, P., & Keller, K. L. (2015). Marketing Management (15th ed.). Pearson.
+- James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). An Introduction to Statistical Learning. Springer.
+- Han, J., Kamber, M., & Pei, J. (2011). Data Mining: Concepts and Techniques (3rd ed.). Elsevier.
 
 
 
