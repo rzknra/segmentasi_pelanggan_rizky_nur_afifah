@@ -110,14 +110,14 @@ Interpretasi:
 ### Penilaian Data
 Pada tahap ini, dilakukan pengecekan terhadap beberapa aspek penting dalam dataset, yaitu:
 
-- **Validitas Data**: Memeriksa apakah nilai data valid atau tidak.
-- **Data Duplikat**: Memeriksa apakah terdapat data yang terduplikat atau memiliki nilai yang sama dengan data lainnya.
 - **Missing Value**: Memeriksa apakah ada data yang hilang atau tidak tersedia pada fitur-fitur yang ada.
+- **Data Duplikat**: Memeriksa apakah terdapat data yang terduplikat atau memiliki nilai yang sama dengan data lainnya.
+- - **Validitas Data**: Memeriksa apakah nilai data valid atau tidak.
 
 Ditemukan bahwa:
+- Terdapat **34335** data duplikat
+- Terdapat **243.007** Customer ID dan **4382** Description yang hilang.
 - Terdapat **19.494** transaksi yang dibatalkan (Invoice diawali huruf 'C')
-- Terdapat **243.007** Customer ID yang hilang
-- Terdapat **4382** Description yang hilang
 - Terdapat **22950** Description bernilai negatif dan 5 Price bernilai negatif
 - Terdapat StockCode yang terdiri dari 6 digit (kebanyakan berpola 5 digit angka + 1 huruf (kapital/kecil)), yang seharusnya hanya terdiri dari 5 digit angka.
 
@@ -125,13 +125,13 @@ Ditemukan bahwa:
 
 Langkah selanjutnya adalah melakukan **Pembersihan Data** sebagai berikut:
 
+- **Penghapusan Customer ID dan Description yang hilang**: Menghapus Customer ID yang hilang agar tidak terjadi distorsi data.
+- **Penghapusan data duplikat**: Menghapus 34.335 sampel yang terduplikat agar tidak terjadi distorsi data.
 - **Penghapusan transaksi yang dibatalkan**: Menghapus transaksi yang dibatalkan agar tidak terjadi distorsi data.
-- **Penghapusan Customer ID yang hilang**: Menghapus Customer ID yang hilang agar tidak terjadi distorsi data.
-- **Penghapusan Description yang hilang**: Menghapus Description yang hilang agar tidak terjadi distorsi data.
 - **Penghapusan data dengan Quantity bernilai negatif**: Setelah dilakukan pengecekan lebih lanjut ternyata dari 22.950 sampel dengan Quantity negatif, sebanyak 19.493 sampel berasal dari transaksi yang dibatalkan. Mengingat total transaksi yang dibatalkan berjumlah 19.494, berarti hanya ada satu transaksi yang dibatalkan dengan Quantity tidak negatif. Hal ini menunjukkan bahwa Quantity negatif kemungkinan besar digunakan sebagai penanda transaksi yang dibatalkan. Oleh karena itu, untuk memastikan analisis hanya mencakup transaksi valid, data dengan Quantity negatif perlu dihapus.
 - **Penghapusan Price bernilai negatif**: Setalah ditinjau lebih lanjut, transaksi dengan price negatif ternyata tidak merepresentasikan perilaku pelanggan, melainkan penyesuaian keuangan terkait utang buruk ("adjust bad debt"). Karena analisis berfokus pada perilaku pelanggan, transaksi semacam ini sebaiknya dihapus dari dataset untuk menghindari ketidaktepatan dalam hasil analisis.
 - **Pertahankan StockKode dengan pola 5 digit angka dan 5 digit angka + 1 huruf kapital**: Setelahan dilakukan analisis lebih lanjut, tambahan angka setelah digit ternyata melambankan variasi dari barang. Namun, terjadi ketidakkonsistenan penulisan huruf setelah 5 digit angka, yang mana itu bisa merupakan huruf kecil atau besar. Setelah di cek lebih lanjut, StockCode dengan pola 5 digit angka + 1 huruf kapital dan 5 digit angka + 1 huruf kecil mempunyai deskripsi yang sama. Oleh karena itu, semua huruf kecil dibelakang 5 digit angka diubah menjadi huruf kapital agar format data lebih konsisten. Dengan demikian StokeCode dengan pola 5 digit angka + 5 digit angka + 1 huruf kapital dipertahankan dalam data.
-- **Penghapusan data duplikat**: Menghapus 34.335 sampel yang terduplikat agar tidak terjadi distorsi data.
+
 
 Setelah dilakukan pembersihan, data terdiri dari 779.425 sampel dan 7 fitur. Berikut ini ditampilan 5 sampel awal dari data yang sudah dibersihkan.
 
