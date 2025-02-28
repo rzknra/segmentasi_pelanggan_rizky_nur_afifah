@@ -334,57 +334,23 @@ Dihitung nilai rata-rata Recency, Frequency, Monetery dari masing-masing cluster
 | 2       | 323.70  |   3.68    | 1110.40   |
 | 3       |  47.59  |   1.90    |  495.62   |
 
-Berikut ini interpretasi dan strategi bisnis yang bisa diterapkan berdasarkan tabel di atas:
+Berikut ini interpretasi berdasarkan tabel di atas:
 
-- **Cluster 0: Pelanggan Loyal dengan Pembelanjaan Tinggi**  
-  - **Recency (44.86 hari):** Baru saja melakukan pembelian dalam waktu relatif dekat.  
-  - **Frequency (6.91 kali):** Sering berbelanja dibandingkan cluster lainnya.  
-  - **Monetary (2036.99):** Rata-rata total belanja per pelanggan cukup tinggi.  
+| **Cluster** | **Recency (R)** | **Frequency (F)** | **Monetary (M)** | **Interpretasi** |
+|------------|---------------:|-----------------:|-----------------:|----------------|
+| **0** | 447.03 (tinggi) | 1.18 (rendah) | 271.36 (rendah) | **Pelanggan Tidak Aktif** – Sudah lama tidak bertransaksi, jarang membeli, dan mengeluarkan sedikit uang. |
+| **1** | 44.86 (rendah) | 6.91 (tinggi) | 2036.99 (tinggi) | **Pelanggan Loyal** – Baru saja bertransaksi, sering membeli, dan mengeluarkan banyak uang. |
+| **2** | 47.59 (rendah) | 1.89 (rendah) | 495.62 (rendah) | **Pelanggan Baru atau Sesekali** – Baru melakukan transaksi, tetapi jarang membeli dan nilai pembeliannya kecil. |
+| **3** | 323.70 (tinggi) | 3.67 (sedang) | 1110.40 (sedang) | **Pelanggan Berkala** – Sudah cukup lama tidak bertransaksi, tetapi frekuensi dan nilai pembeliannya masih lumayan. |
 
-**Kesimpulan:**  
-Pelanggan di cluster ini adalah pelanggan **loyal** yang sering berbelanja dan mengeluarkan banyak uang. Mereka bisa menjadi **target utama untuk program loyalitas atau penawaran eksklusif**.  
-
-
-
-- **Cluster 1: Pelanggan Tidak Aktif dengan Pembelian Rendah**  
-  - **Recency (447.03 hari):** Sudah sangat lama tidak melakukan pembelian.  
-  - **Frequency (1.19 kali):** Jarang berbelanja.  
-  - **Monetary (271.36):** Total belanja per pelanggan paling rendah dibanding cluster lain.  
-
-**Kesimpulan:**  
-Cluster ini berisi **pelanggan yang hampir tidak aktif** atau **mantan pelanggan**. Untuk mengaktifkan kembali mereka, strategi seperti **diskon khusus atau email re-engagement** dapat digunakan.  
-
-
-
-- **Cluster 2: Pelanggan Berbelanja Secara Berkala dengan Pembelian Sedang**  
-  - **Recency (323.70 hari):** Sudah cukup lama sejak terakhir kali melakukan pembelian.  
-  - **Frequency (3.68 kali):** Kadang-kadang melakukan pembelian.  
-  - **Monetary (1110.40):** Total belanja cukup tinggi.  
-
-**Kesimpulan:**  
-Pelanggan di cluster ini masih memiliki **potensi untuk diaktifkan kembali** karena mereka pernah mengeluarkan jumlah uang yang cukup besar, meskipun frekuensi belanjanya tidak tinggi. **Strategi diskon eksklusif atau personalisasi produk bisa efektif untuk menarik mereka kembali.**  
-
-
-
-- **Cluster 3: Pelanggan Baru atau Sesekali dengan Pembelian Kecil**  
-  - **Recency (47.59 hari):** Baru saja berbelanja dalam waktu relatif dekat.  
-  - **Frequency (1.90 kali):** Tidak terlalu sering berbelanja.  
-  - **Monetary (495.62):** Pengeluaran tidak terlalu besar.  
-
-**Kesimpulan:**  
-Pelanggan di cluster ini bisa jadi adalah **pelanggan baru atau sesekali**. Untuk meningkatkan keterlibatan mereka, bisa diberikan **program welcome reward atau promo yang mendorong mereka untuk kembali berbelanja lebih sering**.
-
-
-**Kesimpulan Umum & Strategi**  
+Dengan memahami karakteristik masing-masing cluster, dapat diterapkan strategi pemasaran yang lebih efektif sebagai berikut.
 
 | **Cluster** | **Karakteristik** | **Strategi Pemasaran** |
 |------------|------------------|----------------------|
-| **0** | Pelanggan loyal, sering berbelanja, pengeluaran tinggi | Program loyalitas, VIP deals, rekomendasi produk eksklusif |
-| **1** | Pelanggan lama yang tidak aktif, pembelian rendah | Email re-engagement, diskon khusus untuk menarik kembali pelanggan |
-| **2** | Pelanggan yang pernah aktif dengan pembelanjaan besar | Penawaran personalisasi, promo eksklusif untuk meningkatkan frekuensi pembelian |
-| **3** | Pelanggan baru atau sesekali | Welcome rewards, program referral, promo first-time buyer |
-
-Dengan memahami karakteristik masing-masing cluster, dapat diterapkan strategi pemasaran yang lebih efektif dan **memaksimalkan retensi serta nilai pelanggan**.
+| **0 - Pelanggan Tidak Aktif** | Sudah lama tidak membeli, jarang bertransaksi, dan nilai pembelian rendah | - Kampanye **re-engagement** melalui email atau notifikasi.  <br> - **Diskon khusus** untuk menarik mereka kembali.  <br> - **Penawaran produk terbaru** untuk meningkatkan minat. |
+| **1 - Pelanggan Loyal** | Sering membeli, baru saja bertransaksi, dan nilai pembelian tinggi | - **Program loyalitas** dengan cashback atau poin reward.  <br> - **Akses eksklusif ke produk baru atau promo VIP**.  <br> - **Rekomendasi produk personalisasi** berdasarkan histori pembelian. |
+| **2 - Pelanggan Baru atau Sesekali** | Baru bertransaksi, jarang membeli, dan nilai pembelian rendah | - **Promosi khusus untuk pelanggan baru** (diskon first-time buyer).  <br> - **Edukasi produk** melalui email atau media sosial.  <br> - **Penawaran bundling** untuk meningkatkan nilai pembelian. |
+| **3 - Pelanggan Berkala** | Sudah cukup lama tidak membeli, tetapi masih memiliki transaksi bernilai sedang | - **Diskon eksklusif atau penawaran spesial** untuk mendorong pembelian ulang.  <br> - **Pengingat produk favorit** melalui email atau WhatsApp.  <br> - **Penawaran paket berlangganan** atau membership untuk meningkatkan keterlibatan. |
 
 ## Referensi
 - Kotler, P., & Keller, K. L. (2015). Marketing Management (15th ed.). Pearson.
